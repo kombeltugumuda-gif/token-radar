@@ -1,0 +1,153 @@
+/* Token Radar's theme: deep navy, warm amber, paper. The palette, radii and
+   two families are the whole style; everything else is spacing, a hairline
+   and a type step. */
+:root {
+  --canvas: #eef1f4;
+  --surface: #ffffff;
+  --ink: #14202e;
+  --muted: #5b6b7c;
+  --border: #d5dde4;
+  --accent: #b4761a;
+  --accent-ink: #7a4d08;
+  --accent-soft: #fdf3dd;
+  --navy: #14202e;
+  --navy-soft: #1e3049;
+  --negative: #a83226;
+  --positive: #1e7a4c;
+  --radius: 10px;
+  --radius-s: 6px;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font: 15px/1.5 var(--sans);
+}
+.skip { position: absolute; left: -9999px; }
+.skip:focus { position: static; display: block; padding: 8px 16px; background: var(--navy); color: #fff; }
+#board { max-width: 1080px; margin: 0 auto; padding: 20px 20px 40px; }
+
+/* Hero: navy band, amber rule, four stats. */
+.hero {
+  background: var(--navy);
+  color: #f4f6f8;
+  border-radius: var(--radius);
+  padding: 28px 28px 24px;
+  margin-bottom: 16px;
+  border-bottom: 4px solid var(--accent);
+}
+.hero h1 { margin: 0 0 8px; font-size: 34px; letter-spacing: -0.02em; }
+.hero .lede { margin: 0; max-width: 72ch; color: #c3cedb; font-size: 16px; }
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 22px 0 0;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--navy-soft);
+}
+.stats div { margin: 0; }
+.stats dt { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: #93a3b5; }
+.stats dd { margin: 2px 0 0; font-size: 22px; font-weight: 700; color: #fff; }
+.stats dd.sub { font-size: 13px; font-weight: 400; color: #93a3b5; }
+
+/* Panels and controls. */
+.panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 16px; }
+.panel h2 { margin: 0 0 8px; font-size: 20px; }
+.controls { padding-top: 14px; }
+.tabs { display: flex; gap: 8px; margin-bottom: 14px; }
+.tabs button, .scope button {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font: 600 14px var(--sans);
+  cursor: pointer;
+}
+.tabs button.on, .scope button.on { background: var(--navy); border-color: var(--navy); color: #fff; }
+.filters { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; }
+.filters label { font-size: 13px; font-weight: 600; color: var(--muted); display: flex; flex-direction: column; gap: 4px; }
+.filters input, .filters select {
+  font: 14px var(--sans);
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-s);
+  padding: 8px 10px;
+  min-width: 180px;
+}
+.filters input:focus, .filters select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.scope { display: flex; gap: 6px; margin-left: auto; }
+.count { color: var(--muted); font-size: 13px; margin: 14px 0 8px; }
+.empty { color: var(--muted); padding: 20px 0; }
+
+/* Tables. */
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+.strong { font-weight: 700; }
+.sub { font-size: 12px; color: var(--muted); }
+.up { color: var(--positive); }
+.down { color: var(--negative); }
+.sort { background: none; border: 0; padding: 0; font: inherit; color: inherit; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em; }
+.name { background: none; border: 0; padding: 0; font: 600 14px var(--sans); color: var(--accent-ink); cursor: pointer; text-align: left; }
+.name:hover { text-decoration: underline; }
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-radius: 999px;
+  padding: 2px 8px;
+  margin-left: 6px;
+  vertical-align: 1px;
+}
+.badge.watch { background: var(--accent-soft); color: var(--accent-ink); border: 1px solid #e8c98a; }
+.badge.early { background: #e8eef4; color: var(--navy); border: 1px solid #c2cfdb; }
+
+/* Model panel. */
+.model .formula { margin: 10px 0; padding-left: 20px; }
+.model .formula li { margin-bottom: 6px; }
+.cats { margin-top: 12px; }
+.cats td, .cats th { padding: 6px 10px; }
+.note { color: var(--muted); font-size: 13px; margin: 12px 0 0; }
+.foot { color: var(--muted); font-size: 13px; margin: 4px 2px 0; }
+
+/* Detail dialog. */
+dialog { border: 1px solid var(--border); border-radius: var(--radius); padding: 0; max-width: 720px; width: calc(100vw - 32px); max-height: calc(100vh - 32px); color: var(--ink); }
+dialog::backdrop { background: rgba(20, 32, 46, 0.55); }
+.detail { padding: 22px 24px; max-height: calc(100vh - 32px); overflow-y: auto; }
+.detail-head { display: flex; justify-content: space-between; gap: 12px; align-items: start; }
+.detail-head h2 { margin: 0; font-size: 24px; }
+.detail-head .sub { margin-top: 4px; }
+.close { border: 1px solid var(--border); background: var(--surface); border-radius: var(--radius-s); width: 32px; height: 32px; font-size: 20px; line-height: 1; cursor: pointer; }
+.facts { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin: 18px 0; padding: 14px; background: var(--canvas); border-radius: var(--radius-s); }
+.facts div { margin: 0; }
+.facts dt { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+.facts dd { margin: 2px 0 0; font-weight: 700; font-size: 15px; }
+.detail h3 { margin: 18px 0 8px; font-size: 16px; }
+.breakdown td, .breakdown th { padding: 7px 10px; }
+.steps { list-style: none; margin: 0; padding: 0; }
+.steps li { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.steps li:last-child { border-bottom: 0; }
+.step-n {
+  flex: 0 0 26px; height: 26px; border-radius: 50%;
+  background: var(--navy); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font: 700 13px var(--sans);
+}
+.steps p { margin: 0; }
+.steps .meta { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+@media (max-width: 760px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .facts { grid-template-columns: repeat(2, 1fr); }
+  .scope { margin-left: 0; }
+  th:nth-child(4), td:nth-child(4) { display: none; }
+}
